@@ -1,13 +1,28 @@
 from classes import Player as pl
 
-name=input('Quel est ton nom ?')
-P = pl(1,1,name)
+#fonctions utiles
+def show(map):
+    for line in map:
+        for c in line:
+            print(c)
 
-with open('map-sample.txt') as reader:
-    for line in reader:
-        print(line, end="")
+#inplémentation de la map
+with open('josephine.txt', 'r') as in_file:
+    file = in_file.readlines()
+    for i in range(len(file)):
+        file[i] = list(file[i])
 
-nextmove = input("\n")
-P.move(nextmove)
+##déroulé du jeu
+
+#initialisation
+#name=input('Quel est ton nom ? ')
+P = pl(1,1,'rogue')
+show(file)
+
+
+    #nextmove = input()
+    #while nextmove != 't':
+        #P.move(nextmove)
+
 
 

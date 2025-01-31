@@ -126,7 +126,7 @@ def is_entity(pl) :
              players[(pl.x,pl.y)].life -= damage
              if players[[(pl.x,pl.y)]].life <= 0 : 
                 not_here(players[(pl.x,pl.y)])
-                print "game over, click esc"
+                print ("game over, click esc")
     else : 
         if (pl.x,pl.y) in monsters : 
             damage = random.randint(20)

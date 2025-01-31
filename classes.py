@@ -33,13 +33,20 @@ class Entity:
 
     def __repr__(self):
         return f"{self.name} : ({self.x, self.y})"
-    
-class Player(Entity) : 
+
+
+class Player(Entity):
     def __init__(self, x, y, name):
-        super().__init__(x,y,name,'@')
+        super().__init__(x, y, name, "@")
+
+
+class valroy(Entity):
+    def __init__(self, x, y, name):
+        super().__init__(x, y, name, "")
 
 
 def is_empty(x, y, map):
-    if map[y][x] in ["-", "|", " "]:
+    if map[x][y] in ["-", "|", " "]:
+        print(map[x][y])
         return False
     return True

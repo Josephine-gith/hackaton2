@@ -1,5 +1,4 @@
 from classes import *
-from ines import clear
 
 
 # fonctions utiles
@@ -55,6 +54,4 @@ while nextmove != "t":
     if nextmove in {"q", "s", "z", "d"}:
         update_map(P, nextmove, map)
         discover(P, amap, map)
-        clear()
         print_map(amap)
-

@@ -1,12 +1,15 @@
 from time import sleep
 from os import system
 
-sleep_time = 0.2 
-
-map = f = open('ines.txt', 'r')
+map = open('ines.txt', 'r+')
+map_content = map.read()
 
 def clear():
     _ = system('clear')
 
-def print_map()
-    print()
+def print_map() : 
+    print(map_content)
+
+def update_map(move)
+    if move 
+    

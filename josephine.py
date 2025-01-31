@@ -29,7 +29,7 @@ def discover(x, y, amap, map):
 
 def update_map(player, move, map):
     global E
-    with open("josephine.txt", "r") as in_file:
+    with open("map luigi.txt", "r") as in_file:
         reader = [list(line) for line in in_file.readlines()]
         map[player.x][player.y] = reader[player.x][player.y]
     player.move(move, map)
@@ -37,8 +37,8 @@ def update_map(player, move, map):
         map[player.x][player.y] = "@"
         print_map(map)
         print(f"BRAVOOO {P.name} !")
-        E=True
-    else :
+        E = True
+    else:
         map[player.x][player.y] = "@"
 
 
@@ -49,13 +49,14 @@ with open("josephine.txt", "r") as in_file:
 ##déroulé du jeu
 
 # initialisation
-name=input('Quel est ton nom ? ')
+name = input("Quel est ton nom ? ")
 P = Player(1, 1, name)
+V = Valroy(7, 5, "prout")
 map[P.x][P.y] = "@"
 amap = [([" " for j in range(len(map[i]))] + ["\n"]) for i in range(len(map))]
 discover(P.x, P.y, amap, map)
 print_map(amap)
-E=False
+E = False
 
 
 # jeu en cours

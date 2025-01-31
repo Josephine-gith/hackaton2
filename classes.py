@@ -1,6 +1,6 @@
 import random
 
-def is_object(pl) :
+def is_object(pl,map) :
     if map[pl.x][pl.y] == 'G' : 
         sum = random.randint(3,30)
         pl.inventory["gold"] += sum
@@ -19,7 +19,7 @@ def is_object(pl) :
     elif map[pl.x][pl.y] == "w" : 
         pl.thirst += 10
 
-def not_here(pl) : 
+def not_here(pl,map) : 
     map[pl.x][pl.y] = sample_map[pl.x][pl.y]
 
 class Entity:
@@ -34,32 +34,32 @@ class Entity:
         if nextmove == "s" or nextmove == "down":
             if is_empty(self.x + 1, self.y, map):
                 self.x += 1
-                is_object(self)
+                is_object(self,map)
                 return self.x, self.y
             else:
                 return self.x + 1, self.y
         elif nextmove == "z" or nextmove == "up":
             if is_empty(self.x - 1, self.y, map):
                 self.x -= 1
-                is_object(self)
+                is_object(self,map)
                 return self.x, self.y
             else:
                 return self.x - 1, self.y
         elif nextmove == "q" or nextmove == "left":
             if is_empty(self.x, self.y - 1, map):
                 self.y -= 1
-                is_object(self)
+                is_object(self,map)
                 return self.x, self.y
             else:
                 return self.x, self.y - 1
         elif nextmove == "d" or nextmove == "right":
             if is_empty(self.x, self.y + 1, map):
                 self.y += 1
-                is_object(self)
+                is_object(self,map)
                 return self.x, self.y
             else:
                 self.y += 1
-                is_entity(self)
+                is_entity(self,map)
                 self.y -= 1
                 return self.x, self.y + 1
 
@@ -120,20 +120,20 @@ monsters = (
 players = {}
 
 
-def is_entity(pl):
+def is_entity(pl,map):
     if type(pl) != Player:
         if (pl.x, pl.y) in players:
             damage = random.randint(20)
             players[(pl.x, pl.y)].life -= damage
             if players[[(pl.x, pl.y)]].life <= 0:
-                not_here(players[(pl.x, pl.y)])
+                not_here(players[(pl.x, pl.y)], map)
                 print("game over, click esc")
     else:
         if (pl.x, pl.y) in monsters:
             damage = random.randint(20)
             monsters[(pl.x, pl.y)].life -= damage
             if monsters.life <= 0:
-                not_here(monsters[(pl.x, pl.y)])
+                not_here(monsters[(pl.x, pl.y)],map)
                 monsters.pop((pl.x, pl.y))
 
 

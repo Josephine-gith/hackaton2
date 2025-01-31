@@ -40,19 +40,19 @@ def refresh(pl,nextmove) :
 
 #initialisation
 #name=input('Quel est ton nom ? ')
-pl = Player(1,1,'rogue')
-map = copy.deepcopy(sample_map)
-map[pl.x][pl.y]=pl.car
-print_map()
+#pl = Player(1,1,'rogue')
+#map = copy.deepcopy(sample_map)
+#map[pl.x][pl.y]=pl.car
+#print_map()
 
 #jeu en cours
-nextmove=None
-while nextmove!='t':
-    nextmove=input("next move : ")
-    if nextmove in {'q','s','z','d'}:
-        refresh(pl,nextmove)
+#nextmove=None
+#while nextmove!='t':
+#    nextmove=input("next move : ")
+#   if nextmove in {'q','s','z','d'}:
+  #      refresh(pl,nextmove)
     
-def is_object(pl)
+def is_object(pl) :
     if map[pl.x][pl.y] == 'G' : 
         sum = random.randint(3,30)
         pl.inventory["gold"] += sum
@@ -78,7 +78,7 @@ def is_entity(pl) :
              players[(pl.x,pl.y)].life -= damage
              if players[[(pl.x,pl.y)]].life <= 0 : 
                 not_here(players[(pl.x,pl.y)])
-                print "game over, click esc"
+                print ("game over, click esc")
     else : 
         if (pl.x,pl.y) in monsters : 
             damage = random.randint(20)

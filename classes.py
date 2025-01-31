@@ -45,7 +45,6 @@ class Player(Entity):
 
 
 def is_empty(x, y, map):
-    global file
     if map[y][x] in ["-", "|", " "]:
         return False
     return True

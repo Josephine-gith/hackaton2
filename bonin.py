@@ -51,12 +51,28 @@ print_map(amap)
 def on_press(key):
     if key == keyboard.Key.esc:
         return False
-    nextmove = key.char
-    if nextmove in ['z', 'q', 's', 'd']:
-        update_map(P,nextmove,map) 
-        discover(P, amap, map)
-        print_map(amap)
+    try:
+        nextmove = key.char
+    except:
+        nextmove = key.name
+        if nextmove in ['up', 'down', 'left', 'right']:
+            
+            update_map(P,nextmove,map) 
+            discover(P, amap, map)
+            print_map(amap)
+            
+            #print("key pressed : " + nextmove)
+    else:
+        if nextmove in ['z', 'q', 's', 'd']:
+            
+            update_map(P,nextmove,map) 
+            discover(P, amap, map)
+            print_map(amap)
+
+            #print("key pressed : " + nextmove)
 
 listener = keyboard.Listener(on_press=on_press)
 listener.start()
 listener.join()
+
+

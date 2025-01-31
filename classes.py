@@ -6,25 +6,25 @@ class Entity:
         self.car = car
 
     def move(self, nextmove, map):
-        if nextmove == "s":
+        if nextmove == "s" or nextmove == "down":
             if is_empty(self.x + 1, self.y, map):
                 self.x += 1
                 return self.x, self.y
             else:
                 return self.x + 1, self.y
-        elif nextmove == "z":
+        elif nextmove == "z" or nextmove == "up":
             if is_empty(self.x - 1, self.y, map):
                 self.x -= 1
                 return self.x, self.y
             else:
                 return self.x - 1, self.y
-        elif nextmove == "q":
+        elif nextmove == "q" or nextmove == "left":
             if is_empty(self.x, self.y - 1, map):
                 self.y -= 1
                 return self.x, self.y
             else:
                 return self.x, self.y - 1
-        elif nextmove == "d":
+        elif nextmove == "d" or nextmove == "right":
             if is_empty(self.x, self.y + 1, map):
                 self.y += 1
                 return self.x, self.y

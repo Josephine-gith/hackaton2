@@ -9,6 +9,5 @@ with open('map-sample.txt') as reader:
 
 nextmove = input("\n")
 P.move(nextmove)
-from classes import Player
 
 

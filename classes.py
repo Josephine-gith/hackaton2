@@ -61,7 +61,19 @@ class Player(Entity):
 '''
 class Monster(Entity):
     def __init__(self, x, y, name, char,life):
-        super().__init__(x, y, name, char,)
+        super().__init__(x, y, name, char,life)
+
+    def nextmove(self, player):
+        delta_x = abs(self.x - player.x)
+        delta_y = abs(self.y - player.y)
+        if delta_x > delta_y:
+            if self.x - player.x > 0:
+                return "up"
+            return "down"
+        else:
+            if self.y - player.y > 0:
+                return "right"
+            return "left"
 
 class Valroy(Monster) : 
     def __init__(self, x, y, name):
@@ -103,16 +115,25 @@ def is_object(pl) :
             pl.thirst += 10
             not_here(pl)
 
+
 monsters = {} # dictionnaire ; key = coordinates ; value = instance de monstre (peut s'appeler pedro par exemple)
+players = {}
 
 def is_entity(pl) :
     if type(pl)!=Player : 
-        return
+        if (pl.x,pl.y) in players : 
+             damage = random.randint(20)
+             players[(pl.x,pl.y)].life -= damage
+             if players[[(pl.x,pl.y)]].life <= 0 : 
+                not_here(players[(pl.x,pl.y)])
+                print ("game over, click esc")
     else : 
         if (pl.x,pl.y) in monsters : 
             damage = random.randint(20)
-            monsters[(pl.x,pl.y)].life -=1
-            if 
+            monsters[(pl.x,pl.y)].life -= damage
+            if monsters.life <= 0 : 
+                not_here(monsters[(pl.x,pl.y)])
+                monsters.pop((pl.x,pl.y))
             
 
 def is_empty(x, y, map):

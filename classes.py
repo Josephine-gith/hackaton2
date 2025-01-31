@@ -63,6 +63,18 @@ class Monster(Entity):
     def __init__(self, x, y, name, char,life):
         super().__init__(x, y, name, char,life)
 
+    def nextmove(self, player):
+        delta_x = abs(self.x - player.x)
+        delta_y = abs(self.y - player.y)
+        if delta_x > delta_y:
+            if self.x - player.x > 0:
+                return "up"
+            return "down"
+        else:
+            if self.y - player.y > 0:
+                return "right"
+            return "left"
+
 class Valroy(Monster) : 
     def __init__(self, x, y, name):
         super().__init__(x, y, name, 'V',300)

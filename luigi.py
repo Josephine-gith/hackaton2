@@ -61,6 +61,23 @@ def on_press(key):
         print_map(amap)
 
 
-listener = keyboard.Listener(on_press=on_press)
+"""listener = keyboard.Listener(on_press=on_press)
 listener.start()
-listener.join()
+listener.join()"""
+
+
+class Monster(Entity):
+    def __init__(self, x, y, name, char):
+        super().__init__(x, y, name, char)
+
+    def nextmove(self, player):
+        delta_x = abs(self.x - player.x)
+        delta_y = abs(self.y - player.y)
+        if delta_x > delta_y:
+            if self.x - player.x > 0:
+                return "up"
+            return "down"
+        else:
+            if self.y - player.y > 0:
+                return "right"
+            return "left"

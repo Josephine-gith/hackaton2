@@ -1,7 +1,8 @@
-class player:
+class Player:
     def __init__(self, x, y, name):
         self.x = x
         self.y = y
+        self.name = name
 
     def move(self, nextmove):
         if nextmove == "d":

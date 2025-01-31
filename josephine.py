@@ -1,6 +1,13 @@
-from classes import Player
+from classes import Player as pl
 
-nom = input('Quel est ton nom ?')
+name=input('Quel est ton nom ?')
+P = pl(1,1,name)
 
-P = Player(0,0,nom)
-print(P)
+with open('map-sample.txt') as reader:
+    for line in reader:
+        print(line, end="")
+
+nextmove = input("\n")
+P.move(nextmove)
+
+

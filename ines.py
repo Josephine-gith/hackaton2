@@ -15,24 +15,24 @@ def clear():
 def print_map() : 
     print(''.join([''.join(map[k]) for k in range (len(map))]))
     
-def not_here(pl) : 
-    map[pl.x][pl.y] = sample_map[pl.x][pl.y]
+def not_here(luigi) : 
+    map[luigi.x][luigi.y] = sample_map[pl.x][pl.y]
 
-def here(pl) :
-    map[pl.x][pl.y] = pl.car
+def here(luigi) :
+    map[luigi.x][luigi.y] = pl.car
 
-def refresh(pl,nextmove) : 
+def refresh(luigi,nextmove) : 
 
     #on update la map
-    not_here(pl)
-    pl.move(nextmove)
-    here(pl)
+    not_here(luigi)
+    luigi.move(nextmove)
+    here(luigi)
 
     #on refresh la carte avec les updates
     clear()
     print_map()
 
-    
+
     
 
 

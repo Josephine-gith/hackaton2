@@ -37,6 +37,9 @@ class Entity:
                 is_object(self)
                 return self.x, self.y
             else:
+                self.y += 1
+                is_entity(self)
+                self.y -= 1
                 return self.x, self.y + 1
 
     def __repr__(self):
@@ -55,6 +58,18 @@ class Player(Entity):
         self.inventory = {"gold" : 0 ,
                           "potions" : 0 
                           } # inventory est un dictionnaire key = objet, value = combien on en a
+
+class Valroy(Entity):
+    def __init__(self, x, y, name):
+        super().__init__(x, y, name, "V")
+
+class Lionel(Entity):
+    def __init__(self, x, y, name):
+        super().__init__(x, y, name, "L")
+
+class Fontane(Entity):
+    def __init__(self, x, y, name):
+        super().__init__(x, y, name, "F")
 
 def is_object(pl) : 
     
@@ -84,17 +99,11 @@ def is_object(pl) :
             pl.thirst += 10
             not_here(pl)
 
-class Valroy(Entity):
-    def __init__(self, x, y, name):
-        super().__init__(x, y, name, "V")
-
-class Lionel(Entity):
-    def __init__(self, x, y, name):
-        super().__init__(x, y, name, "L")
-
-class Fontane(Entity):
-    def __init__(self, x, y, name):
-        super().__init__(x, y, name, "F")
+def is_entity(pl) :
+    if type(pl)!=Player : 
+        return
+    else : 
+        if 
 
 def is_empty(x, y, map):
     if map[x][y] in ["-", "|", " "]:

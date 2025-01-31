@@ -40,10 +40,17 @@ class Player(Entity):
         super().__init__(x, y, name, "@")
 
 
-class valroy(Entity):
+class Valroy(Entity):
     def __init__(self, x, y, name):
-        super().__init__(x, y, name, "")
+        super().__init__(x, y, name, "V")
 
+class Lionel(Entity):
+    def __init__(self, x, y, name):
+        super().__init__(x, y, name, "L")
+
+class Fontane(Entity):
+    def __init__(self, x, y, name):
+        super().__init__(x, y, name, "F")
 
 def is_empty(x, y, map):
     if map[x][y] in ["-", "|", " "]:

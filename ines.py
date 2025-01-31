@@ -11,7 +11,7 @@ def array_from_map(txt) :  #Construit un array a partir du fichier texte
 
 sample_map = array_from_map('map-sample.txt')
 
-map = array_from_map('ines.txt')
+#map = array_from_map('ines.txt')
 
 def clear():
     _ = system('clear')
@@ -41,7 +41,7 @@ def refresh(pl,nextmove) :
 #name=input('Quel est ton nom ? ')
 pl = Player(1,1,'rogue')
 map = copy.deepcopy(sample_map)
-map[pl.y][pl.x]='@'
+map[pl.y][pl.x]=pl.car
 print_map()
 
 #jeu en cours

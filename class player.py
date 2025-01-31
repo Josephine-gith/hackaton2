@@ -13,3 +13,6 @@ class Player:
             self.y += 1
         elif nextmove == "s":
             self.y -= 1
+    
+    def __repr__(self):
+        return f"{self.name} : ({self.x, self.y})"

@@ -1,6 +1,10 @@
 from os import system
+from classes import Player
+import copy
 
-def array_from_map(txt) :
+##Fonctions utiles 
+
+def array_from_map(txt) :  #Construit un array a partir du fichier texte
     map = open(txt, 'r')
     indexed_x_map = map.readlines()
     return([list(line) for line in indexed_x_map])
@@ -25,14 +29,33 @@ def refresh(pl,nextmove) :
 
     #on update la map
     not_here(pl)
-    pl.move(nextmove)
+    pl.move(nextmove,map)
     here(pl)
 
     #on refresh la carte avec les updates
     clear()
     print_map()
 
+
+#initialisation
+#name=input('Quel est ton nom ? ')
+pl = Player(1,1,'rogue')
+map = copy.deepcopy(sample_map)
+map[pl.y][pl.x]='@'
+print_map()
+
+#jeu en cours
+nextmove=None
+while nextmove!='t':
+    nextmove=input("next move : ")
+    if nextmove in {'q','s','z','d'}:
+        refresh(pl,nextmove)
     
+class Player(Entity) : 
+    def __init__(self, x, y, name):
+        super().__init__(x,y,name,'@')
+
+
     
 
 

@@ -19,9 +19,6 @@ class Player:
     def __repr__(self):
         return f"{self.name} : ({self.x, self.y})"
 
-#fonctions utiles
-def print_map(map): 
-    print(''.join([''.join(map[k]) for k in range (len(map))]))
 
 def discover(player, amap, file):
     x=player.x
@@ -35,9 +32,21 @@ def update_map(player,move,map):
             map[player.y][player.x]=reader[player.y][player.x]
     player.move(move)
     file[player.y][player.x]='@'
+# fonctions utiles
+def print_map(map):
+    print("".join(["".join(map[k]) for k in range(len(map))]))
 
-#inplémentation de la map
-with open('josephine.txt', 'r') as in_file:
+
+def update_map(player, move, map):
+    with open("josephine.txt", "r") as in_file:
+        reader = [list(line) for line in in_file.readlines()]
+        map[player.y][player.x] = reader[player.y][player.x]
+    player.move(move, map)
+    file[player.y][player.x] = "@"
+
+
+# inplémentation de la map
+with open("josephine.txt", "r") as in_file:
     file = in_file.readlines()
     file = [list(line) for line in file]
 

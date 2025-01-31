@@ -1,2 +1,3 @@
 def is_mur(x,y)
-    if 
+    if map[y][x] in ['-','|'] :
+        return True

@@ -21,5 +21,18 @@ def not_here(pl) :
 def here(pl) :
     map[pl.x][pl.y] = pl.car
 
+def refresh(pl,nextmove) : 
+
+    #on update la map
+    not_here(pl)
+    pl.move(nextmove)
+    here(pl)
+
+    #on refresh la carte avec les updates
+    clear()
+    print_map()
+
+    
+    
 
 

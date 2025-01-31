@@ -1,27 +1,5 @@
 from classes import *
 
-# classes
-"""class Player:
-    def __init__(self, x, y, name):
-        self.x = x
-        self.y = y
-        self.name = name
-        self.car = '@'
-
-    def move(self, nextmove):
-        if nextmove == "d":
-            self.x += 1
-        elif nextmove == "q":
-            self.x -= 1
-        elif nextmove == "z":
-            self.y -= 1
-        elif nextmove == "s":
-            self.y += 1
-    
-    def __repr__(self):
-        return f"{self.name} : ({self.x, self.y})"
-"""
-
 
 # fonctions utiles
 def print_map(map):
@@ -49,23 +27,23 @@ def update_map(player, move, map):
     with open("josephine.txt", "r") as in_file:
         reader = [list(line) for line in in_file.readlines()]
         map[player.y][player.x] = reader[player.y][player.x]
-    player.move(move)
-    file[player.y][player.x] = "@"
+    player.move(move, map)
+    map[player.y][player.x] = "@"
 
 
 # inplémentation de la map
 with open("josephine.txt", "r") as in_file:
-    file = in_file.readlines()
-    file = [list(line) for line in file]
+    map = in_file.readlines()
+    map = [list(line) for line in map]
 
 ##déroulé du jeu
 
 # initialisation
 # name=input('Quel est ton nom ? ')
 P = Player(1, 1, "rogue")
-file[P.y][P.x] = "@"
-amap = [([" " for j in range(len(file[0]) - 1)] + ["\n"]) for i in range(len(file))]
-discover(P, amap, file)
+map[P.y][P.x] = "@"
+amap = [([" " for j in range(len(map[0]) - 1)] + ["\n"]) for i in range(len(map))]
+discover(P, amap, map)
 print_map(amap)
 
 
@@ -74,6 +52,6 @@ nextmove = None
 while nextmove != "t":
     nextmove = input()
     if nextmove in {"q", "s", "z", "d"}:
-        update_map(P, nextmove, file)
-        discover(P, amap, file)
+        update_map(P, nextmove, map)
+        discover(P, amap, map)
         print_map(amap)

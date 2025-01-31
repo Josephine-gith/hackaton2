@@ -1,4 +1,6 @@
-from main import player
+from classes import Player
 
-P = player(0,0)
-print player
+nom = input('Quel est ton nom ?')
+
+P = Player(0,0,nom)
+print(P)

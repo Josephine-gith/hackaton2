@@ -1,6 +1,7 @@
 from os import system
 from classes import Player
 import copy
+import random
 
 ##Fonctions utiles 
 
@@ -51,8 +52,21 @@ while nextmove!='t':
     if nextmove in {'q','s','z','d'}:
         refresh(pl,nextmove)
     
-
-
-    
-
-
+def is_object(pl)
+    if map[pl.x][pl.y] == 'G' : 
+        sum = random.randint(3,30)
+        pl.inventory["gold"] += sum
+        not_here
+    elif map[pl.x][pl.y] == 'j' : 
+        pl.inventory["potion"] += 1
+    elif map[pl.x][pl.y] == "&" : 
+        armor = random.randint(1,5)
+        pl.defense += armor
+    elif map[pl.x][pl.y] == "!" : 
+        sword = random.randint(1,5)
+        pl.attack += sword
+    elif map[pl.x][pl.y] == "f" : 
+        miam = random.randint(3,10)
+        pl.hunger += miam
+    elif map[pl.x][pl.y] == "w" : 
+        pl.thirst += 10

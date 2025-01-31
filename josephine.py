@@ -33,9 +33,9 @@ def update_map(player, move, map):
         reader = [list(line) for line in in_file.readlines()]
         map[player.x][player.y] = reader[player.x][player.y]
     player.move(move, map)
-    for entity in entities :
-        if type(entity) != Player:
-            entity.move( entity.nextmove(), map)
+    for entity in entities:
+        if type(entity) == Monster:
+            entities[entity].move(entities[entity].nextmove(player), map)
 
     if map[player.x][player.y] == "=":
         map[player.x][player.y] = "@"
@@ -52,7 +52,7 @@ with open("map-sample.txt", "r") as in_file:
     map = [list(line) for line in map]
 
 ##déroulé du jeu
-'''
+"""
 # initialisation
 name = input("Quel est ton nom ? ")
 P = Player(1, 1, name)
@@ -62,7 +62,7 @@ amap = [([" " for j in range(len(map[i]))] + ["\n"]) for i in range(len(map))]
 discover(P.x, P.y, amap, map)
 print_map(amap)
 E = False
-'''
+"""
 
 # jeu en cours
 """def on_press(key):

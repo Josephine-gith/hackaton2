@@ -14,8 +14,8 @@ P = Player(1, 1, name)
 V = Valroy(3, 3, "valérie")
 map[P.x][P.y] = "@"
 map[3][3] = "V"
-players[(1,1)] = P
-monsters[(3,3)] = V
+entities[(1, 1)] = P
+entities[(3, 3)] = V
 
 amap = [([" " for j in range(len(map[i]))] + ["\n"]) for i in range(len(map))]
 discover(P.x, P.y, amap, map)
@@ -38,4 +38,3 @@ def on_press(key):
 listener = keyboard.Listener(on_press=on_press)
 listener.start()
 listener.join()
-print(map)

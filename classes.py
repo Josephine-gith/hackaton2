@@ -20,7 +20,7 @@ def is_object(pl,map) :
         pl.thirst += 10
 
 def not_here(pl,map) : 
-    map[pl.x][pl.y] = sample_map[pl.x][pl.y]
+    map[pl.x][pl.y] = map[pl.x][pl.y]
 
 class Entity:
     def __init__(self, x, y, name, car, life):

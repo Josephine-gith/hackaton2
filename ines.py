@@ -29,7 +29,7 @@ def refresh(pl,nextmove) :
 
     #on update la map
     not_here(pl)
-    pl.move(nextmove)
+    pl.move(nextmove,map)
     here(pl)
 
     #on refresh la carte avec les updates
@@ -50,42 +50,6 @@ while nextmove!='t':
     nextmove=input("next move : ")
     if nextmove in {'q','s','z','d'}:
         refresh(pl,nextmove)
-
-class Entity():
-    def __init__(self, x, y, name, car):
-        self.x = x
-        self.y = y
-        self.name = name
-        self.car = car
-
-    def move(self, nextmove):
-        if nextmove == "d":
-            if is_empty(self.x+1,self.y):
-                self.x += 1
-                return self.x, self.y
-            else:
-                return self.x+1, self.y
-        elif nextmove == "q":
-            if is_empty(self.x-1,self.y):
-                self.x -= 1
-                return self.x,self.y
-            else:
-                return self.x-1, self.y
-        elif nextmove == "z":
-            if is_empty(self.x,self.y-1):
-                self.y -= 1
-                return self.x,self.y
-            else:
-                return self.x, self.y-1
-        elif nextmove == "s":
-            if is_empty(self.x,self.y-1):
-                self.y += 1
-                return self.x,self.y
-            else:
-                return self.x, self.y+1
-    
-    def __repr__(self):
-        return f"{self.name} : ({self.x, self.y})"
     
 class Player(Entity) : 
     def __init__(self, x, y, name):

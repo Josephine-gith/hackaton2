@@ -29,7 +29,7 @@ def refresh(pl,nextmove) :
 
     #on update la map
     not_here(pl)
-    pl.move(nextmove)
+    pl.move(nextmove,map)
     here(pl)
 
     #on refresh la carte avec les updates
@@ -50,8 +50,7 @@ while nextmove!='t':
     nextmove=input("next move : ")
     if nextmove in {'q','s','z','d'}:
         refresh(pl,nextmove)
-
-
+    
 
 
     

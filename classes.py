@@ -3,6 +3,7 @@ class Player:
         self.x = x
         self.y = y
         self.name = name
+        self.car = '@'
 
     def move(self, nextmove):
         if nextmove == "d":

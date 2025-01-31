@@ -1,20 +1,4 @@
 from pynput import keyboard
-
-'''
-def on_press(key):
-    if key == keyboard.Key.esc:
-        return False
-    nextmove = key.char
-    if nextmove in ['z', 'q', 's', 'd']:
-        update_map(P,nextmove,map) 
-        discover(P, amap, map)
-        print_map(amap)
-
-listener = keyboard.Listener(on_press=on_press)
-listener.start()
-listener.join()
-'''
-
 from classes import *
 
 
@@ -63,7 +47,7 @@ amap = [([" " for j in range(len(map[0]) - 1)] + ["\n"]) for i in range(len(map)
 discover(P, amap, map)
 print_map(amap)
 
-
+#jeu en cours
 def on_press(key):
     if key == keyboard.Key.esc:
         return False
@@ -76,14 +60,3 @@ def on_press(key):
 listener = keyboard.Listener(on_press=on_press)
 listener.start()
 listener.join()
-
-'''
-# jeu en cours
-nextmove = None
-while nextmove != "t":
-    nextmove = input()
-    if nextmove in {"q", "s", "z", "d"}:
-        update_map(P, nextmove, map)
-        discover(P, amap, map)
-        print_map(amap)
-'''

@@ -73,7 +73,12 @@ def is_object(pl)
 
 def is_entity(pl) :
     if type(pl)!=Player : 
-        (pl.x,pl.y) in monsters :
+        if (pl.x,pl.y) in players : 
+             damage = random.randint(20)
+             players[(pl.x,pl.y)].life -= damage
+             if players[[(pl.x,pl.y)]].life <= 0 : 
+                not_here(players[(pl.x,pl.y)])
+                print "game over, click esc"
     else : 
         if (pl.x,pl.y) in monsters : 
             damage = random.randint(20)

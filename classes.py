@@ -109,12 +109,19 @@ players = {}
 
 def is_entity(pl) :
     if type(pl)!=Player : 
-        return
+        if (pl.x,pl.y) in players : 
+             damage = random.randint(20)
+             players[(pl.x,pl.y)].life -= damage
+             if players[[(pl.x,pl.y)]].life <= 0 : 
+                not_here(players[(pl.x,pl.y)])
+                print "game over, click esc"
     else : 
         if (pl.x,pl.y) in monsters : 
             damage = random.randint(20)
-            monsters[(pl.x,pl.y)].life -=1
-            if 
+            monsters[(pl.x,pl.y)].life -= damage
+            if monsters.life <= 0 : 
+                not_here(monsters[(pl.x,pl.y)])
+                monsters.pop((pl.x,pl.y))
             
 
 def is_empty(x, y, map):

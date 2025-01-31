@@ -61,7 +61,7 @@ class Player(Entity):
 
 class Monster(Entity):
     def __init__(self, x, y, name, char,life):
-        super().__init__(x, y, name, char,)
+        super().__init__(x, y, name, char,life)
 
     def nextmove(self, player):
         delta_x = abs(self.x - player.x)
@@ -115,7 +115,9 @@ def is_object(pl) :
             pl.thirst += 10
             not_here(pl)
 
+
 monsters = {} # dictionnaire ; key = coordinates ; value = instance de monstre (peut s'appeler pedro par exemple)
+players = {}
 
 def is_entity(pl) :
     if type(pl)!=Player : 

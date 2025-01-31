@@ -15,9 +15,11 @@ def clear():
 def print_map() : 
     print(''.join([''.join(map[k]) for k in range (len(map))]))
     
-def not_here(Player) : 
-    map[Player.x][Player.y] = sample_map[Player.x][Player.y]
+def not_here(pl) : 
+    map[pl.x][pl.y] = sample_map[pl.x][pl.y]
 
-def here(Player)
-    map[Player.x][Player.y] = Player.car
+def here(pl) :
+    map[pl.x][pl.y] = pl.car
+
+
 

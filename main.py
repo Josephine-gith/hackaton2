@@ -1,0 +1,14 @@
+class player:
+    def __init__(self, x, y, name):
+        self.x = x
+        self.y = y
+
+    def move(self, nextmove):
+        if nextmove == "d":
+            self.x += 1
+        elif nextmove == "q":
+            self.x -= 1
+        elif nextmove == "z":
+            self.y += 1
+        elif nextmove == "s":
+            self.y -= 1

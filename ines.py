@@ -41,7 +41,7 @@ def refresh(pl,nextmove) :
 #name=input('Quel est ton nom ? ')
 pl = Player(1,1,'rogue')
 map = copy.deepcopy(sample_map)
-map[pl.y][pl.x]=pl.car
+map[pl.x][pl.y]=pl.car
 print_map()
 
 #jeu en cours

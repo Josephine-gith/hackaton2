@@ -1,20 +1,37 @@
 from classes import *
-from ines import *
 from josephine import *
 from pynput import keyboard
 
-name = input("Quel est ton nom ?")
-P = Player(1, 1, name)
+# inplémentation de la map
+with open("map-sample.txt", "r") as in_file:
+    map = in_file.readlines()
+    map = [list(line) for line in map]
+##déroulé du jeu
 
-while True:
-    """
-    objectif général :
-    info = move(player)
-    if info is vide :
-        analyser_case (recup les objets)
-    elif info is aggro :
-        combat
-    move(entities)
-    update(map)
-    display(map)"""
-    
+# initialisation
+name = input("Quel est ton nom ? ")
+P = Player(1, 1, name)
+V = Valroy(7, 5, "valérie")
+map[P.x][P.y] = "@"
+amap = [([" " for j in range(len(map[i]))] + ["\n"]) for i in range(len(map))]
+discover(P.x, P.y, amap, map)
+print_map(amap)
+E = False
+
+
+# jeu en cours
+def on_press(key):
+    if key == keyboard.Key.esc:
+        return False
+
+    nextmove = key.char
+    if nextmove in ["z", "q", "s", "d"]:
+        update_map(P, nextmove, map)
+        discover(P.x, P.y, amap, map)
+        if not E:
+            print_map(amap)
+
+
+listener = keyboard.Listener(on_press=on_press)
+listener.start()
+listener.join()

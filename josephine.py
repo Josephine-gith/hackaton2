@@ -1,5 +1,4 @@
-from classes import Player as pl
-
+from classes import Player
 
 #fonctions utiles
 def print_map(map): 
@@ -21,7 +20,7 @@ with open('josephine.txt', 'r') as in_file:
 
 #initialisation
 #name=input('Quel est ton nom ? ')
-P = pl(1,1,'rogue')
+P = Player(1,1,'rogue')
 file[P.y][P.x]='@'
 print_map(file)
 

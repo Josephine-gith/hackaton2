@@ -60,8 +60,20 @@ class Player(Entity):
                           } # inventory est un dictionnaire key = objet, value = combien on en a
 
 class Monster(Entity):
-    def __init__(self, x, y, name, char):
-        super().__init__(x, y, name, char)
+    def __init__(self, x, y, name, char,life):
+        super().__init__(x, y, name, char,)
+
+class Valroy(Monster) : 
+    def __init__(self, x, y, name):
+        super().__init__(x, y, name, 'V',300)
+
+class Lionel(Monster) : 
+    def __init__(self, x, y, name):
+        super().__init__(x, y, name, 'L',300)
+
+class Fontane(Monster) : 
+    def __init__(self, x, y, name):
+        super().__init__(x, y, name, 'F',500)
 
 def is_object(pl) : 
     
@@ -91,11 +103,17 @@ def is_object(pl) :
             pl.thirst += 10
             not_here(pl)
 
+monsters = {} # dictionnaire ; key = coordinates ; value = instance de monstre (peut s'appeler pedro par exemple)
+
 def is_entity(pl) :
     if type(pl)!=Player : 
         return
     else : 
-        if 
+        if (pl.x,pl.y) in monsters : 
+            damage = random.randint(20)
+            monsters[(pl.x,pl.y)].life -=1
+            if 
+            
 
 def is_empty(x, y, map):
     if map[x][y] in ["-", "|", " "]:

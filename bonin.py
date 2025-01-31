@@ -1,59 +1,62 @@
 from pynput import keyboard
-from classes import Player
+from classes import *
 
 
+# fonctions utiles
+def print_map(map):
+    print("".join(["".join(map[k]) for k in range(len(map))]))
 
 
+def discover(player, amap, file):
+    x = player.x
+    y = player.y
+    for i, j in {
+        (x - 1, y - 1),
+        (x - 1, y),
+        (x - 1, y + 1),
+        (x, y - 1),
+        (x, y),
+        (x, y + 1),
+        (x + 1, y - 1),
+        (x + 1, y),
+        (x + 1, y + 1),
+    }:
+        amap[i][j] = file[i][j]
 
-'''
-listener = keyboard.Listener(on_press=on_press)
-listener.start()
-listener.join()
-'''
 
-#fonctions utiles
-def print_map(map): 
-    print(''.join([''.join(map[k]) for k in range (len(map))]))
+def update_map(player, move, map):
+    with open("josephine.txt", "r") as in_file:
+        reader = [list(line) for line in in_file.readlines()]
+        map[player.x][player.y] = reader[player.x][player.y]
+    player.move(move, map)
+    map[player.x][player.y] = "@"
 
-def update_map(player,move,map):
-    with open('C:\\Users\\User\\desktop\\hackathon\\hackaton2\\josephine.txt','r') as in_file:
-            reader = [list(line) for line in in_file.readlines()]
-            map[player.y][player.x]=reader[player.y][player.x]
-    player.move(move)
-    file[player.y][player.x]='@'
 
-#inplémentation de la map
-with open('C:\\Users\\User\\desktop\\hackathon\\hackaton2\\josephine.txt', 'r') as in_file:
-    file = in_file.readlines()
-    file = [list(line) for line in file]
+# inplémentation de la map
+with open("josephine.txt", "r") as in_file:
+    map = in_file.readlines()
+    map = [list(line) for line in map]
 
 ##déroulé du jeu
 
-#initialisation
-#name=input('Quel est ton nom ? ')
-P = Player(1,1,'rogue')
-file[P.y][P.x]='@'
-print_map(file)
+# initialisation
+# name=input('Quel est ton nom ? ')
+P = Player(1, 1, "rogue")
+map[P.x][P.y] = "@"
+amap = [([" " for j in range(len(map[0]) - 1)] + ["\n"]) for i in range(len(map))]
+discover(P, amap, map)
+print_map(amap)
 
 #jeu en cours
-
 def on_press(key):
     if key == keyboard.Key.esc:
         return False
-    nextmove = key.name
-    if nextmove in ['up', 'down', 'left', 'right']:
-        update_map(P,nextmove,file) 
-        print_map(file)
+    nextmove = key.char
+    if nextmove in ['z', 'q', 's', 'd']:
+        update_map(P,nextmove,map) 
+        discover(P, amap, map)
+        print_map(amap)
 
 listener = keyboard.Listener(on_press=on_press)
 listener.start()
 listener.join()
-
-'''       
-nextmove=None
-while nextmove!='t':
-    nextmove=input()
-    if nextmove in {'q','s','z','d'}:
-        update_map(P,nextmove,file)
-        print_map(file)
-'''

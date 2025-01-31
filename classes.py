@@ -7,13 +7,29 @@ class Entity():
 
     def move(self, nextmove):
         if nextmove == "d":
-            self.x += 1
+            if is_empty(self.x+1,self.y):
+                self.x += 1
+                return self.x, self.y
+            else:
+                return self.x+1, self.y
         elif nextmove == "q":
-            self.x -= 1
+            if is_empty(self.x-1,self.y):
+                self.x -= 1
+                return self.x,self.y
+            else:
+                return self.x-1, self.y
         elif nextmove == "z":
-            self.y -= 1
+            if is_empty(self.x,self.y-1):
+                self.y -= 1
+                return self.x,self.y
+            else:
+                return self.x, self.y-1
         elif nextmove == "s":
-            self.y += 1
+            if is_empty(self.x,self.y-1):
+                self.y += 1
+                return self.x,self.y
+            else:
+                return self.x, self.y+1
     
     def __repr__(self):
         return f"{self.name} : ({self.x, self.y})"
@@ -22,3 +38,9 @@ class Player(Entity) :
     def __init__(self, x, y, name):
         super().__init__(x,y,name,'@')
 
+
+
+def is_empty(x,y)
+    if map[y][x] in ['-','|'] :
+        return False
+    return True

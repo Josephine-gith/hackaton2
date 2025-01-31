@@ -29,7 +29,7 @@ def discover(x, y, amap, map):
 
 def update_map(player, move, map):
     global E
-    with open("map luigi.txt", "r") as in_file:
+    with open("map-sample.txt", "r") as in_file:
         reader = [list(line) for line in in_file.readlines()]
         map[player.x][player.y] = reader[player.x][player.y]
     player.move(move, map)
@@ -43,7 +43,7 @@ def update_map(player, move, map):
 
 
 # inplémentation de la map
-with open("josephine.txt", "r") as in_file:
+with open("map-sample.txt", "r") as in_file:
     map = in_file.readlines()
     map = [list(line) for line in map]
 ##déroulé du jeu

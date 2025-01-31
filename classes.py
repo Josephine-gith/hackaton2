@@ -59,17 +59,9 @@ class Player(Entity):
                           "potions" : 0 
                           } # inventory est un dictionnaire key = objet, value = combien on en a
 
-class Valroy(Entity):
-    def __init__(self, x, y, name):
-        super().__init__(x, y, name, "V")
-
-class Lionel(Entity):
-    def __init__(self, x, y, name):
-        super().__init__(x, y, name, "L")
-
-class Fontane(Entity):
-    def __init__(self, x, y, name):
-        super().__init__(x, y, name, "F")
+class Monster(Entity):
+    def __init__(self, x, y, name, char):
+        super().__init__(x, y, name, char)
 
 def is_object(pl) : 
     

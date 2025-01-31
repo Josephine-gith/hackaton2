@@ -1,9 +1,9 @@
-class Player:
-    def __init__(self, x, y, name):
+class Entity():
+    def __init__(self, x, y, name, car):
         self.x = x
         self.y = y
         self.name = name
-        self.car = '@'
+        self.car = car
 
     def move(self, nextmove):
         if nextmove == "d":
@@ -17,3 +17,8 @@ class Player:
     
     def __repr__(self):
         return f"{self.name} : ({self.x, self.y})"
+    
+class Player(Entity) : 
+    def __init__(self, x, y, name):
+        super().__init__(x,y,name,'@')
+

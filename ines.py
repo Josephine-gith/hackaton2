@@ -2,7 +2,9 @@ from os import system
 from classes import Player
 import copy
 
-def array_from_map(txt) :
+##Fonctions utiles 
+
+def array_from_map(txt) :  #Construit un array a partir du fichier texte
     map = open(txt, 'r')
     indexed_x_map = map.readlines()
     return([list(line) for line in indexed_x_map])
@@ -45,10 +47,10 @@ print_map()
 #jeu en cours
 nextmove=None
 while nextmove!='t':
-    nextmove=input()
+    nextmove=input("next move : ")
     if nextmove in {'q','s','z','d'}:
         refresh(pl,nextmove)
-        print_map()
+
 
 
 

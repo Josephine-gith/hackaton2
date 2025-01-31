@@ -39,6 +39,9 @@ class Entity:
                 entities.pop((self.x - 1,self.y))
                 return self.x, self.y
             else:
+                self.x += 1
+                is_entity(self,map)
+                self.x -= 1
                 return self.x + 1, self.y
         elif nextmove == "z" or nextmove == "up":
             if is_empty(self.x - 1, self.y, map):
@@ -48,6 +51,9 @@ class Entity:
                 entities.pop((self.x + 1,self.y))
                 return self.x, self.y
             else:
+                self.x -= 1
+                is_entity(self,map)
+                self.x += 1
                 return self.x - 1, self.y
         elif nextmove == "q" or nextmove == "left":
             if is_empty(self.x, self.y - 1, map):
@@ -57,6 +63,9 @@ class Entity:
                 entities.pop((self.x,self.y+1))
                 return self.x, self.y
             else:
+                self.y -= 1
+                is_entity(self,map)
+                self.y += 1
                 return self.x, self.y - 1
         elif nextmove == "d" or nextmove == "right":
             if is_empty(self.x, self.y + 1, map):

@@ -9,11 +9,11 @@ P = Player(1, 1, name)
 while True:
     """
     objectif général :
-    move(player)
-    analyser_case (recup les objets)
-    if combat :
+    info = move(player)
+    if info is vide :
+        analyser_case (recup les objets)
+    elif info is aggro :
         combat
-    else :
-        move(entities)
+    move(entities)
     update(map)
     display(map)"""

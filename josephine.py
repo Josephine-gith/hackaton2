@@ -20,15 +20,15 @@ def discover(player, amap, file):
         (x + 1, y),
         (x + 1, y + 1),
     }:
-        amap[j][i] = file[j][i]
+        amap[i][j] = file[i][j]
 
 
 def update_map(player, move, map):
     with open("josephine.txt", "r") as in_file:
         reader = [list(line) for line in in_file.readlines()]
-        map[player.y][player.x] = reader[player.y][player.x]
+        map[player.x][player.y] = reader[player.x][player.y]
     player.move(move, map)
-    map[player.y][player.x] = "@"
+    map[player.x][player.y] = "@"
 
 
 # inplémentation de la map
@@ -41,7 +41,7 @@ with open("josephine.txt", "r") as in_file:
 # initialisation
 # name=input('Quel est ton nom ? ')
 P = Player(1, 1, "rogue")
-map[P.y][P.x] = "@"
+map[P.x][P.y] = "@"
 amap = [([" " for j in range(len(map[0]) - 1)] + ["\n"]) for i in range(len(map))]
 discover(P, amap, map)
 print_map(amap)

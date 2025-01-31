@@ -7,21 +7,21 @@ def print_map(map):
     print("".join(["".join(map[k]) for k in range(len(map))]))
 
 
-def discover(player, amap, file):
-    x = player.x
-    y = player.y
-    for i, j in {
-        (x - 1, y - 1),
-        (x - 1, y),
-        (x - 1, y + 1),
-        (x, y - 1),
-        (x, y),
-        (x, y + 1),
-        (x + 1, y - 1),
-        (x + 1, y),
-        (x + 1, y + 1),
-    }:
-        amap[i][j] = file[i][j]
+def discover(x, y, amap, map):
+    if amap[x][y] == " " and map[x][y] != " ":
+        for i, j in {
+            (x - 1, y - 1),
+            (x - 1, y),
+            (x - 1, y + 1),
+            (x, y - 1),
+            (x, y),
+            (x, y + 1),
+            (x + 1, y - 1),
+            (x + 1, y),
+            (x + 1, y + 1),
+        }:
+            amap[i][j] = map[i][j]
+
 
 
 def update_map(player, move, map):
@@ -44,18 +44,20 @@ with open("josephine.txt", "r") as in_file:
 P = Player(1, 1, "rogue")
 map[P.x][P.y] = "@"
 amap = [([" " for j in range(len(map[0]) - 1)] + ["\n"]) for i in range(len(map))]
-discover(P, amap, map)
+discover(P.x,P.y, amap, map)
 print_map(amap)
 
-#jeu en cours
+
+# jeu en cours
 def on_press(key):
     if key == keyboard.Key.esc:
         return False
     nextmove = key.char
-    if nextmove in ['z', 'q', 's', 'd']:
-        update_map(P,nextmove,map) 
-        discover(P, amap, map)
+    if nextmove in ["z", "q", "s", "d"]:
+        update_map(P, nextmove, map)
+        discover(P.x,P.y, amap, map)
         print_map(amap)
+
 
 listener = keyboard.Listener(on_press=on_press)
 listener.start()

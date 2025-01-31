@@ -3,6 +3,8 @@ from ines import *
 from josephine import *
 from pynput import keyboard
 
+name=input('Quel est ton nom ?')
+P = classes.Player(1,1,name)
 
 while True:
     """
@@ -15,3 +17,4 @@ while True:
         move(entities)
     update(map)
     display(map)"""
+    

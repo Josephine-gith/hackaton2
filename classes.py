@@ -1,5 +1,5 @@
-from ines import is_object, not_here
-import random
+#from ines import is_object, not_here
+#import random
 
 class Entity:
     def __init__(self, x, y, name, car, life):
@@ -58,7 +58,7 @@ class Player(Entity):
         self.inventory = {"gold" : 0 ,
                           "potions" : 0 
                           } # inventory est un dictionnaire key = objet, value = combien on en a
-
+'''
 class Monster(Entity):
     def __init__(self, x, y, name, char,life):
         super().__init__(x, y, name, char,)
@@ -120,3 +120,4 @@ def is_empty(x, y, map):
         print(map[x][y])
         return False
     return True
+'''

@@ -1,6 +1,26 @@
-from ines import is_object, not_here
 import random
 
+def is_object(pl) :
+    if map[pl.x][pl.y] == 'G' : 
+        sum = random.randint(3,30)
+        pl.inventory["gold"] += sum
+        not_here
+    elif map[pl.x][pl.y] == 'j' : 
+        pl.inventory["potion"] += 1
+    elif map[pl.x][pl.y] == "&" : 
+        armor = random.randint(1,5)
+        pl.defense += armor
+    elif map[pl.x][pl.y] == "!" : 
+        sword = random.randint(1,5)
+        pl.attack += sword
+    elif map[pl.x][pl.y] == "f" : 
+        miam = random.randint(3,10)
+        pl.hunger += miam
+    elif map[pl.x][pl.y] == "w" : 
+        pl.thirst += 10
+
+def not_here(pl) : 
+    map[pl.x][pl.y] = sample_map[pl.x][pl.y]
 
 class Entity:
     def __init__(self, x, y, name, car, life):
@@ -92,35 +112,6 @@ class Lionel(Monster):
 class Fontane(Monster):
     def __init__(self, x, y, name):
         super().__init__(x, y, name, "F", 500)
-
-
-def is_object(pl):
-
-    if type(pl) != Player:
-        return
-    else:
-        if map[pl.x][pl.y] == "G":
-            sum = random.randint(3, 30)
-            pl.inventory["gold"] += sum
-            not_here(pl)  # ici enleve l'objet du sol
-        elif map[pl.x][pl.y] == "j":
-            pl.inventory["potion"] += 1
-            not_here(pl)
-        elif map[pl.x][pl.y] == "&":
-            armor = random.randint(1, 5)
-            pl.defense += armor
-            not_here(pl)
-        elif map[pl.x][pl.y] == "!":
-            sword = random.randint(1, 5)
-            pl.attack += sword
-            not_here(pl)
-        elif map[pl.x][pl.y] == "f":
-            miam = random.randint(3, 10)
-            pl.hunger += miam
-            not_here(pl)
-        elif map[pl.x][pl.y] == "w":
-            pl.thirst += 10
-            not_here(pl)
 
 
 monsters = (

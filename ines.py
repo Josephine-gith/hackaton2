@@ -51,9 +51,6 @@ while nextmove!='t':
     if nextmove in {'q','s','z','d'}:
         refresh(pl,nextmove)
     
-class Player(Entity) : 
-    def __init__(self, x, y, name):
-        super().__init__(x,y,name,'@')
 
 
     

@@ -35,6 +35,8 @@ class Entity:
             if is_empty(self.x + 1, self.y, map):
                 self.x += 1
                 is_object(self,map)
+                entities[(self.x,self.y)] = self
+                entities.pop((self.x - 1,self.y))
                 return self.x, self.y
             else:
                 return self.x + 1, self.y
@@ -42,6 +44,8 @@ class Entity:
             if is_empty(self.x - 1, self.y, map):
                 self.x -= 1
                 is_object(self,map)
+                entities[(self.x,self.y)] = self
+                entities.pop((self.x + 1,self.y))
                 return self.x, self.y
             else:
                 return self.x - 1, self.y
@@ -49,6 +53,8 @@ class Entity:
             if is_empty(self.x, self.y - 1, map):
                 self.y -= 1
                 is_object(self,map)
+                entities[(self.x,self.y)] = self
+                entities.pop((self.x,self.y+1))
                 return self.x, self.y
             else:
                 return self.x, self.y - 1
@@ -56,6 +62,8 @@ class Entity:
             if is_empty(self.x, self.y + 1, map):
                 self.y += 1
                 is_object(self,map)
+                entities[(self.x,self.y)] = self
+                entities.pop((self.x,self.y-1))
                 return self.x, self.y
             else:
                 self.y += 1
@@ -114,27 +122,24 @@ class Fontane(Monster):
         super().__init__(x, y, name, "F", 500)
 
 
-monsters = (
-    {}
-)  # dictionnaire ; key = coordinates ; value = instance de monstre (peut s'appeler pedro par exemple)
-players = {}
+entities = {}  # dictionnaire ; key = coordinates ; value = instance de monstre (peut s'appeler pedro par exemple)
 
 
 def is_entity(pl,map):
     if type(pl) != Player:
         if (pl.x, pl.y) in players:
             damage = random.randint(20)
-            players[(pl.x, pl.y)].life -= damage
-            if players[[(pl.x, pl.y)]].life <= 0:
-                not_here(players[(pl.x, pl.y)], map)
+            entities[(pl.x, pl.y)].life -= damage
+            if entities[[(pl.x, pl.y)]].life <= 0:
+                not_here(entities[(pl.x, pl.y)], map)
                 print("game over, click esc")
     else:
         if (pl.x, pl.y) in monsters:
             damage = random.randint(20)
-            monsters[(pl.x, pl.y)].life -= damage
-            if monsters.life <= 0:
-                not_here(monsters[(pl.x, pl.y)],map)
-                monsters.pop((pl.x, pl.y))
+            entities[(pl.x, pl.y)].life -= damage
+            if entities[(pl.x, pl.y)].life <= 0:
+                not_here(entities[(pl.x, pl.y)],map)
+                entities.pop((pl.x, pl.y))
 
 
 def is_empty(x, y, map):

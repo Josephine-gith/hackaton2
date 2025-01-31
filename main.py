@@ -11,9 +11,12 @@ with open("map-sample.txt", "r") as in_file:
 # initialisation
 name = input("Quel est ton nom ? ")
 P = Player(1, 1, name)
-V = Valroy(7, 5, "valérie")
+V = Valroy(3, 3, "valérie")
 map[P.x][P.y] = "@"
-map[7][5] = "V"
+map[3][3] = "V"
+players[(1,1)] = P
+monsters[(3,3)] = V
+
 amap = [([" " for j in range(len(map[i]))] + ["\n"]) for i in range(len(map))]
 discover(P.x, P.y, amap, map)
 print_map(amap)
@@ -24,7 +27,6 @@ E = False
 def on_press(key):
     if key == keyboard.Key.esc:
         return False
-
     nextmove = key.char
     if nextmove in ["z", "q", "s", "d"]:
         update_map(P, nextmove, map)
@@ -36,3 +38,4 @@ def on_press(key):
 listener = keyboard.Listener(on_press=on_press)
 listener.start()
 listener.join()
+print(map)

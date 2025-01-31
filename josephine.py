@@ -1,4 +1,4 @@
-from main import Player
+from class_player import Player
 
 nom = input('Quel est ton nom ?')
 

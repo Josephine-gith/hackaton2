@@ -13,6 +13,7 @@ name = input("Quel est ton nom ? ")
 P = Player(1, 1, name)
 V = Valroy(7, 5, "valérie")
 map[P.x][P.y] = "@"
+map[7][5] = "V"
 amap = [([" " for j in range(len(map[i]))] + ["\n"]) for i in range(len(map))]
 discover(P.x, P.y, amap, map)
 print_map(amap)
